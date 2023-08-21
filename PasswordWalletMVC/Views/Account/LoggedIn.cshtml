@@ -1,0 +1,54 @@
+﻿@model PasswordWalletMVC.Models.Password
+
+@{
+    ViewData["Title"] = "LoggedIn";
+}
+
+<h1>Register</h1>
+
+<h4>UserAccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="LoggedIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="PasswordName" class="control-label">Password</label>
+                <input asp-for="PasswordName" class="form-control" />
+                <span asp-validation-for="PasswordName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebAddress" class="control-label">WebAddress</label>
+                <input asp-for="WebAddress" class="form-control" />
+                <span asp-validation-for="WebAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Account" asp-action="DisplayedPasswords" class="btn btn-primary button-form">Display passwords</a>
+    <a asp-controller="Account" asp-action="ChangePassword" class="btn btn-primary button-form">Change account password</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @if (ViewBag.Message != null)
+    {
+        <div class="form-group">
+            <div class="col-md-10">@ViewBag.Message</div>
+        </div>
+    }
+}
